@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         int total = 0;
+        int returned = 0;
 
         System.out.println("Insert Coin");
 
@@ -26,7 +27,9 @@ public class Main {
                     System.out.println(total);
                 }
                 case "1", "penny", "Penny", "PENNY" -> {
+                    returned = returned + 1;
                     System.out.println(total);
+                    coinReturn(returned);
                 }
                 case "exit" -> {
                     System.exit(0);
@@ -36,4 +39,15 @@ public class Main {
         }
 
     }
+
+    public static void coinReturn(int returned){
+        if(returned == 1){
+            System.out.println("Returned " + returned + " cent");
+        }
+        else{
+            System.out.println("Returned " + returned + " cents");
+        }
+
+    }
 }
+
