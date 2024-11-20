@@ -1,7 +1,14 @@
+/*
+    Ethan Ison
+    This is a vending machine kata
+ */
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // total is the amount the user has put in the machine
+        // returned is the amount the machine has placed in the coin return
         int total = 0;
         int returned = 0;
 
@@ -27,7 +34,7 @@ public class Main {
                     System.out.println(total);
                 }
                 case "1", "penny", "Penny", "PENNY" -> {
-                    returned = returned + 1;
+                    returned = returned + Coin.PENNY.value;
                     System.out.println(total);
                     coinReturn(returned);
                 }
@@ -40,6 +47,8 @@ public class Main {
 
     }
 
+    // this coinReturn will return any penny placed into the machine
+    // and keep a running tally of the amount of money in the return
     public static void coinReturn(int returned){
         if(returned == 1){
             System.out.println("Returned " + returned + " cent");
