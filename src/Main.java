@@ -40,6 +40,11 @@ public class Main {
                 }
                 case "cola", "chips", "candy" -> {
                     total = selectProduct(total, userInput);
+                    if(total > 0){
+                        returned = returned + total;
+                        total = 0;
+                        coinReturn(returned);
+                    }
                 }
                 case "exit" -> {
                     System.exit(0);
@@ -71,10 +76,12 @@ public class Main {
                 if(total >= 100){
                     System.out.println("THANK YOU");
                     if(total != 100) {
-                        coinReturn(total - 100);
+                        total = total - 100;
+                    }
+                    else{
+                        total = 0;
                     }
                     System.out.println("INSERT COIN");
-                    total = 0;
                 }
                 else{
                     System.out.println("PRICE");
@@ -91,10 +98,12 @@ public class Main {
                 if(total >= 50){
                     System.out.println("THANK YOU");
                     if(total != 50) {
-                        coinReturn(total - 50);
+                        total = total - 50;
+                    }
+                    else{
+                        total = 0;
                     }
                     System.out.println("INSERT COIN");
-                    total = 0;
                 }
                 else{
                     System.out.println("PRICE");
@@ -111,10 +120,12 @@ public class Main {
                 if(total >= 65){
                     System.out.println("THANK YOU");
                     if(total != 65) {
-                        coinReturn(total - 65);
+                        total = total - 65;
+                    }
+                    else{
+                        total = 0;
                     }
                     System.out.println("INSERT COIN");
-                    total = 0;
                 }
                 else{
                     System.out.println("PRICE");
