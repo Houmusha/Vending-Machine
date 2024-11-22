@@ -64,14 +64,17 @@ public class Main {
 
     // this selectProduct will allow the user to buy a product from the machine
     // it will check the selection and determine if the user has the correct amount
-    //inserted if so it gives the product
+    //inserted if so it gives the product and returns correct change
     public static int selectProduct(int total, String product){
         switch (product) {
             case "cola" -> {
                 if(total >= 100){
-                    total = 0;
                     System.out.println("THANK YOU");
+                    if(total != 100) {
+                        coinReturn(total - 100);
+                    }
                     System.out.println("INSERT COIN");
+                    total = 0;
                 }
                 else{
                     System.out.println("PRICE");
@@ -86,9 +89,12 @@ public class Main {
             }
             case "chips" -> {
                 if(total >= 50){
-                    total = 0;
                     System.out.println("THANK YOU");
+                    if(total != 50) {
+                        coinReturn(total - 50);
+                    }
                     System.out.println("INSERT COIN");
+                    total = 0;
                 }
                 else{
                     System.out.println("PRICE");
@@ -103,9 +109,12 @@ public class Main {
             }
             case "candy" ->{
                 if(total >= 65){
-                    total = 0;
                     System.out.println("THANK YOU");
+                    if(total != 65) {
+                        coinReturn(total - 65);
+                    }
                     System.out.println("INSERT COIN");
+                    total = 0;
                 }
                 else{
                     System.out.println("PRICE");
