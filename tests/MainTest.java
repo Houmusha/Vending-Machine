@@ -24,9 +24,9 @@ class MainTest {
         assertEquals(0, Main.selectProduct(candy, "candy"));
 
         // not enough money
-        assertEquals(99, Main.selectProduct(99, "cola"));
-        assertEquals(49, Main.selectProduct(49, "chips"));
-        assertEquals(64, Main.selectProduct(64, "candy"));
+        assertEquals(95, Main.selectProduct(95, "cola"));
+        assertEquals(45, Main.selectProduct(45, "chips"));
+        assertEquals(60, Main.selectProduct(60, "candy"));
 
         // too much money dispense change
         assertEquals(0, Main.selectProduct(105, "cola"));
