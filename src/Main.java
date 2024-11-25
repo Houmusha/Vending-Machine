@@ -11,6 +11,9 @@ public class Main {
         // returned is the amount the machine has placed in the coin return
         int total = 0;
         int returned = 0;
+        int colaAmount = 2;
+        int chipsAmount = 2;
+        int candyAmount = 2;
 
         System.out.println("INSERT COIN");
 
@@ -38,18 +41,75 @@ public class Main {
                     System.out.println(total);
                     coinReturn(returned);
                 }
-                case "cola", "chips", "candy" -> {
-                    total = selectProduct(total, userInput);
-                    if(total > 0){
-                        returned = returned + total;
-                        total = 0;
-                        coinReturn(returned);
+                case "cola" -> {
+                    if (inStock("cola", colaAmount)) {
+                        colaAmount = colaAmount - 1;
+
+                        total = selectProduct(total, userInput);
+                        if (total > 0) {
+                            returned = returned + total;
+                            total = 0;
+                            coinReturn(returned);
+                        }
+                    }
+                    else {
+                        System.out.println("SOLD OUT");
+                        if (total == 0) {
+                            System.out.println("INSERT COIN");
+                        } else {
+                            System.out.println(total);
+                        }
+                    }
+                }
+
+                case "chips" -> {
+
+                    if ((inStock("chips", chipsAmount))) {
+                        chipsAmount = chipsAmount - 1;
+
+                        total = selectProduct(total, userInput);
+                        if (total > 0) {
+                            returned = returned + total;
+                            total = 0;
+                            coinReturn(returned);
+                        }
+                    }
+                    else {
+                        System.out.println("SOLD OUT");
+                        if (total == 0) {
+                            System.out.println("INSERT COIN");
+                        } else {
+                            System.out.println(total);
+                        }
+                    }
+
+                }
+
+                case "candy" -> {
+                    if ((inStock("candy", candyAmount))) {
+                        candyAmount = candyAmount - 1;
+
+                        total = selectProduct(total, userInput);
+                        if (total > 0) {
+                            returned = returned + total;
+                            total = 0;
+                            coinReturn(returned);
+                        }
+                    }
+                    else {
+                        System.out.println("SOLD OUT");
+                        if (total == 0) {
+                            System.out.println("INSERT COIN");
+                        } else {
+                            System.out.println(total);
+                        }
                     }
                 }
                 case "return", "Return", "RETURN" -> {
                     returned = total + returned;
                     total = 0;
                     coinReturn(returned);
+                    System.out.println("INSERT COIN");
                 }
                 case "exit" -> {
                     System.exit(0);
@@ -147,6 +207,19 @@ public class Main {
         }
 
         return total;
+    }
+
+    // Determines if a specific product is in stock in the machine
+    public static boolean inStock(String product, int productAmount){
+
+        switch (product){
+            case "cola", "chips", "candy" ->{
+                if(productAmount > 0){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
 
