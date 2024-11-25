@@ -33,4 +33,17 @@ class MainTest {
         assertEquals(5, Main.selectProduct(55, "chips"));
         assertEquals(5, Main.selectProduct(70, "candy"));
     }
+
+    @Test
+    void inStock() {
+        //product is in stock
+        assertTrue(Main.inStock("cola", 5));
+        assertTrue(Main.inStock("chips", 5));
+        assertTrue(Main.inStock("candy", 5));
+
+        //product is out of stock
+        assertFalse(Main.inStock("cola", 0));
+        assertFalse(Main.inStock("chips", 0));
+        assertFalse(Main.inStock("candy", 0));
+    }
 }
