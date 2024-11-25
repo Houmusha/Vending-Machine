@@ -46,6 +46,11 @@ public class Main {
                         coinReturn(returned);
                     }
                 }
+                case "return", "Return", "RETURN" -> {
+                    returned = total + returned;
+                    total = 0;
+                    coinReturn(returned);
+                }
                 case "exit" -> {
                     System.exit(0);
                 }
