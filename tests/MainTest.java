@@ -46,4 +46,12 @@ class MainTest {
         assertFalse(Main.inStock("chips", 0));
         assertFalse(Main.inStock("candy", 0));
     }
+
+    @Test
+    void makeChange() {
+        assertTrue(Main.makeChange(100));
+        assertTrue(Main.makeChange(95));
+
+        assertFalse(Main.makeChange(80));
+    }
 }

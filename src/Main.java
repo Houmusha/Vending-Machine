@@ -14,8 +14,14 @@ public class Main {
         int colaAmount = 2;
         int chipsAmount = 2;
         int candyAmount = 2;
+        int change = 95;
 
-        System.out.println("INSERT COIN");
+        if(makeChange(change)) {
+            System.out.println("INSERT COIN");
+        }
+        else{
+            System.out.println("EXACT CHANGE ONLY");
+        }
 
         Scanner input = new Scanner(System.in);
 
@@ -46,16 +52,26 @@ public class Main {
                         colaAmount = colaAmount - 1;
 
                         total = selectProduct(total, userInput);
-                        if (total > 0) {
+                        if (total >= 0) {
                             returned = returned + total;
+                            change = change - total;
                             total = 0;
                             coinReturn(returned);
+
+                            if(makeChange(change)){
+                                System.out.println("INSERT COIN");
+                            }
+                            else{
+                                System.out.println("EXACT CHANGE ONLY");
+                            }
                         }
                     }
                     else {
                         System.out.println("SOLD OUT");
-                        if (total == 0) {
+                        if (total == 0 && makeChange(change)) {
                             System.out.println("INSERT COIN");
+                        } else if (total == 0 && !makeChange(change)) {
+                            System.out.println("EXACT CHANGE ONLY");
                         } else {
                             System.out.println(total);
                         }
@@ -68,16 +84,26 @@ public class Main {
                         chipsAmount = chipsAmount - 1;
 
                         total = selectProduct(total, userInput);
-                        if (total > 0) {
+                        if (total >= 0) {
                             returned = returned + total;
+                            change = change - total;
                             total = 0;
                             coinReturn(returned);
+
+                            if(makeChange(change)){
+                                System.out.println("INSERT COIN");
+                            }
+                            else{
+                                System.out.println("EXACT CHANGE ONLY");
+                            }
                         }
                     }
                     else {
                         System.out.println("SOLD OUT");
-                        if (total == 0) {
+                        if (total == 0 && makeChange(change)) {
                             System.out.println("INSERT COIN");
+                        } else if (total == 0 && !makeChange(change)) {
+                            System.out.println("EXACT CHANGE ONLY");
                         } else {
                             System.out.println(total);
                         }
@@ -90,16 +116,26 @@ public class Main {
                         candyAmount = candyAmount - 1;
 
                         total = selectProduct(total, userInput);
-                        if (total > 0) {
+                        if (total >= 0) {
                             returned = returned + total;
+                            change = change - total;
                             total = 0;
                             coinReturn(returned);
+
+                            if(makeChange(change)){
+                                System.out.println("INSERT COIN");
+                            }
+                            else{
+                                System.out.println("EXACT CHANGE ONLY");
+                            }
                         }
                     }
                     else {
                         System.out.println("SOLD OUT");
-                        if (total == 0) {
+                        if (total == 0 && makeChange(change)) {
                             System.out.println("INSERT COIN");
+                        } else if (total == 0 && !makeChange(change)) {
+                            System.out.println("EXACT CHANGE ONLY");
                         } else {
                             System.out.println(total);
                         }
@@ -146,17 +182,11 @@ public class Main {
                     else{
                         total = 0;
                     }
-                    System.out.println("INSERT COIN");
+                    //System.out.println("INSERT COIN");
                 }
                 else{
                     System.out.println("PRICE");
                     System.out.println("1.00");
-                    if(total == 0){
-                        System.out.println("INSERT COIN");
-                    }
-                    else {
-                        System.out.println(total);
-                    }
                 }
             }
             case "chips" -> {
@@ -168,17 +198,11 @@ public class Main {
                     else{
                         total = 0;
                     }
-                    System.out.println("INSERT COIN");
+                    //System.out.println("INSERT COIN");
                 }
                 else{
                     System.out.println("PRICE");
                     System.out.println(".50");
-                    if(total == 0){
-                        System.out.println("INSERT COIN");
-                    }
-                    else {
-                        System.out.println(total);
-                    }
                 }
             }
             case "candy" ->{
@@ -190,17 +214,11 @@ public class Main {
                     else{
                         total = 0;
                     }
-                    System.out.println("INSERT COIN");
+                    //System.out.println("INSERT COIN");
                 }
                 else{
                     System.out.println("PRICE");
                     System.out.println(".65");
-                    if(total == 0){
-                        System.out.println("INSERT COIN");
-                    }
-                    else {
-                        System.out.println(total);
-                    }
                 }
             }
 
@@ -220,6 +238,10 @@ public class Main {
             }
         }
         return false;
+    }
+
+    public static boolean makeChange(int change){
+        return change >= 95;
     }
 }
 
